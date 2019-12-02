@@ -37,6 +37,8 @@ describe('validator module', () => {
       expect(isBoolean(false)).toBeTruthy();
       expect(isBoolean('1')).toBeFalsy();
       expect(isBoolean(1)).toBeFalsy();
+      expect(isBoolean([])).toBeFalsy();
+      expect(isBoolean({})).toBeFalsy();
     });
 
     // isArray
@@ -85,6 +87,7 @@ describe('validator module', () => {
       expect(castToString('3')).toEqual('3');
       expect(castToString(true)).toEqual('true');
       expect(castToString(false)).toEqual('false');
+      expect(castToString({})).toEqual('[object Object]');
     });
     it('throws if value is not castable to string', () => {
       expect(() => castToString(null)).toThrowErrorMatchingSnapshot();
