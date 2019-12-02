@@ -4,7 +4,6 @@ const {
   isBoolean,
   isArray,
   isObject,
-  CastError,
   getCaster,
   castToNumber,
   castToString,
@@ -14,6 +13,7 @@ const {
 
 describe('validator module', () => {
   describe('basic validation', () => {
+    // isNumber
     it('properly determines if a value is a number', () => {
       expect(isNumber(3)).toBeTruthy();
       expect(isNumber('hi')).toBeFalsy();
@@ -23,24 +23,29 @@ describe('validator module', () => {
       expect(isNumber(true)).toBeFalsy();
     });
 
+    // isString
     it('properly determines if a value is a string', () => {
       expect(isString('')).toBeTruthy();
     });
 
+    // isBoolean
     it('propertly determines if a value is a boolean', () => {
       expect(isBoolean(true)).toBeTruthy();
     });
 
+    // isArray
     it('properly determines if a value is an array', () => {
       expect(isArray([])).toBeTruthy();
     });
 
+    // isObject
     it('propertly determines if a value is an object', () => {
       expect(isObject({})).toBeTruthy();
     }); 
   });
 
   describe('casters', () => {
+    // castToNumber
     it('can cast values to a number', () => {
       expect(castToNumber(3)).toEqual(3);
       expect(castToNumber('3')).toEqual(3);
@@ -52,20 +57,42 @@ describe('validator module', () => {
       expect(() => castToNumber({})).toThrowErrorMatchingSnapshot();
     });
 
+    // castToString
     it('can cast values to a string', () => {
       expect(castToString(3)).toEqual('3');
       expect(castToString('3')).toEqual('3');
       expect(castToString(true)).toEqual('true');
       expect(castToString(false)).toEqual('false');
     });
-    it('throws if value is not castable to number', () => {
-      expect(() => castToNumber('hi')).toThrowErrorMatchingSnapshot();
-      expect(() => castToNumber({})).toThrowErrorMatchingSnapshot();
+    it('throws if value is not castable to string', () => {
+      expect(() => castToString(null)).toThrowErrorMatchingSnapshot();
+      expect(() => castToString(undefined)).toThrowErrorMatchingSnapshot();
     });
 
+    // isBoolean
+    it('can cast values to a boolean', () => {
+      expect(castToBoolean(1)).toEqual(true);
+      expect(castToBoolean(0)).toEqual(false);
+      expect(castToBoolean(true)).toEqual(true);
+      expect(castToBoolean(false)).toEqual(false);
+      expect(castToBoolean(null)).toEqual(false);
+      expect(castToBoolean(undefined)).toEqual(false);
+    });
 
+    // castToArray
+    it('can cast values to a array', () => {
+      expect(castToArray(1)).toEqual([1]);
+      expect(castToArray('1')).toEqual(['1']);
+      expect(castToArray(true)).toEqual([true]);
+      expect(castToArray(false)).toEqual([false]);
+    });
+    it('throws if value is not castable to array', () => {
+      expect(() => castToString(null)).toThrowErrorMatchingSnapshot();
+      expect(() => castToString(undefined)).toThrowErrorMatchingSnapshot();
+    });
   });
 
+  // determine caster
   it('can get the right caster', () => {
     expect(getCaster(Number)).toEqual(castToNumber);
     expect(getCaster(String)).toEqual(castToString);
