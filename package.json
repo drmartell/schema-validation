@@ -1,5 +1,5 @@
 {
-  "name": "01-tdd-types",
+  "name": "schema-validation",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",

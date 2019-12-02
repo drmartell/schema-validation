@@ -26,6 +26,9 @@ describe('validator module', () => {
     // isString
     it('properly determines if a value is a string', () => {
       expect(isString('')).toBeTruthy();
+      expect(isString('string')).toBeTruthy();
+      expect(isString([])).toBeFalsy();
+      expect(isString({})).toBeFalsy();
     });
 
     // isBoolean
@@ -41,6 +44,15 @@ describe('validator module', () => {
     // isObject
     it('propertly determines if a value is an object', () => {
       expect(isObject({})).toBeTruthy();
+      expect(isObject([])).toBeTruthy();
+      expect(isObject([1])).toBeTruthy();
+      expect(isObject({ key: 'value' })).toBeTruthy();
+      expect(isObject(1)).toBeFalsy();
+      expect(isObject('1')).toBeFalsy();
+      expect(isObject(true)).toBeFalsy();
+      expect(isObject(false)).toBeFalsy();
+      expect(isObject(null)).toBeFalsy();
+      expect(isObject(undefined)).toBeFalsy();
     }); 
   });
 

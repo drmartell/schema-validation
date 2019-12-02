@@ -8,10 +8,6 @@ exports[`validator module casters throws if value is not castable to number 1`] 
 
 exports[`validator module casters throws if value is not castable to number 2`] = `"Cannot cast >>[object Object]<< to Number"`;
 
-exports[`validator module casters throws if value is not castable to number 3`] = `"Cannot cast >>hi<< to Number"`;
-
-exports[`validator module casters throws if value is not castable to number 4`] = `"Cannot cast >>[object Object]<< to Number"`;
-
 exports[`validator module casters throws if value is not castable to string 1`] = `"Cannot read property 'toString' of null"`;
 
 exports[`validator module casters throws if value is not castable to string 2`] = `"Cannot read property 'toString' of undefined"`;
