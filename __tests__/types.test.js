@@ -34,11 +34,21 @@ describe('validator module', () => {
     // isBoolean
     it('propertly determines if a value is a boolean', () => {
       expect(isBoolean(true)).toBeTruthy();
+      expect(isBoolean(false)).toBeTruthy();
+      expect(isBoolean('1')).toBeFalsy();
+      expect(isBoolean(1)).toBeFalsy();
     });
 
     // isArray
     it('properly determines if a value is an array', () => {
       expect(isArray([])).toBeTruthy();
+      expect(isArray([1])).toBeTruthy();
+      expect(isArray(['1', '2'])).toBeTruthy();
+      expect(isArray({})).toBeFalsy();
+      expect(isArray(1)).toBeFalsy();
+      expect(isArray('1')).toBeFalsy();
+      expect(isArray(null)).toBeFalsy();
+      expect(isArray(undefined)).toBeFalsy();
     });
 
     // isObject
