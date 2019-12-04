@@ -4,6 +4,7 @@ const {
   isBoolean,
   isArray,
   isObject,
+  isFunction,
   getCaster,
   castToNumber,
   castToString,
@@ -16,6 +17,7 @@ console.log(isString('3'));
 console.log(isBoolean('3'));
 console.log(isArray('3'));
 console.log(isObject('3'));
+console.log(isFunction('3'));
 console.log(getCaster(Number));
 console.log(getCaster(String));
 console.log(getCaster(Boolean));
